@@ -16,23 +16,24 @@ body {
     animation: fadeInBackground 0.5s ease-out; /* 背景淡入动画 */
 }
 
+/* 让主体内容可滚动 */
 .main-container {
     flex: 1;
+    overflow-y: auto;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
 }
 
-/* 标题动画 */
+/* 动态标题样式，适当缩小字体大小以适应手机屏幕 */
 .animated-title {
-    font-size: 36px; /* 调整标题字体大小 */
+    font-size: 24px;
     font-weight: bold;
-    color: #003366; /* 修改为更接近香港版支付宝的标题蓝色，颜色可按需微调 */
+    color: #003366;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    animation: fadeInTitle 1s ease-in-out forwards;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .animated-title span {
@@ -67,51 +68,47 @@ body {
     }
 }
 
-/* 余额框样式 */
+/* 余额框样式，整体宽度设为充满屏幕，增加一些内边距 */
 .balance-box {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    width: 300px;
-    margin-bottom: 20px;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* 让内部元素居中对齐 */
-}
-
-.balance-box:hover {
-    transform: translateY(-5px);
+    align-items: center;
 }
 
 h2 {
-    color: #003366; /* 标题颜色改为更贴近支付宝风格 */
+    color: #003366;
     margin-top: 0;
 }
 
 #balance {
-    font-size: 30px; /* 调整余额字体大小 */
-    color: #003366; /* 余额颜色改为更贴近支付宝风格 */
+    font-size: 20px;
+    color: #003366;
     font-weight: bold;
-    margin-bottom: 15px; /* 增加一点与按钮的间距 */
+    margin-bottom: 15px; /* 适当增加与按钮的间距，让余额更突出 */
 }
 
+/* 余额按钮部分样式调整，横向排列且缩小按钮 */
 .balance-buttons {
     display: flex;
-    flex-wrap: wrap; /* 允许按钮换行，避免超出卡片 */
-    justify-content: center; /* 按钮在卡片内居中排列 */
-    gap: 10px; /* 按钮之间添加一点间距 */
+    flex-direction: row; /* 改为横向排列 */
+    justify-content: space-around; /* 均匀分布按钮 */
+    width: 100%;
 }
 
 .btn {
-    background-color: #0077be; /* 按钮背景色，可微调颜色更贴合风格 */
+    background-color: #0077be;
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 8px 15px; /* 适当调整内边距，让按钮更紧凑美观 */
+    padding: 8px 12px; /* 缩小按钮内边距，使按钮变小 */
     cursor: pointer;
-    font-size: 14px; /* 缩小一点字体大小，使按钮更协调 */
+    font-size: 14px; /* 缩小按钮字体大小 */
     transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
@@ -124,21 +121,22 @@ h2 {
     transform: scale(0.95);
 }
 
-/* 选项按钮样式 */
+/* 选项按钮样式，让按钮宽度充满屏幕，增加上下间距 */
 .option {
-    margin-bottom: 15px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .option-btn {
     background-color: #fff;
-    color: #003366; /* 颜色改为更贴近支付宝风格 */
+    color: #003366;
     border: 2px solid #0077be;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 12px 0;
     cursor: pointer;
     font-size: 16px;
-    width: 200px;
-    text-align: left;
+    text-align: center;
+    width: 100%;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
@@ -153,7 +151,7 @@ h2 {
     transform: translateY(1px);
 }
 
-/* 底部导航栏样式 */
+/* 底部导航栏样式，固定在底部，按钮宽度自适应且等间距排列 */
 .bottom-nav {
     background-color: #fff;
     border-top: 1px solid #ccc;
@@ -168,79 +166,95 @@ h2 {
 
 .nav-btn {
     background-color: transparent;
-    border: 2px solid #ccc; /* 初始添加灰色边框 */
+    border: 2px solid #ccc;
     border-radius: 5px;
-    color: #003366; /* 颜色改为更贴近支付宝风格 */
-    font-size: 18px;
+    color: #003366;
+    font-size: 16px;
     cursor: pointer;
-    padding: 8px 15px; /* 适当调整内边距，让按钮更饱满好看 */
-    transition: all 0.3s ease-in-out; /* 过渡所有可过渡的属性，让效果更自然 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 8px 0;
+    width: 30%; /* 大致平均分配宽度 */
+    text-align: center;
+    transition: all 0.3s ease-in-out;
 }
 
 .nav-btn:hover {
-    border-color: #0077be; /* 鼠标悬停时边框变为主题色 */
+    border-color: #0077be;
     color: #005599;
 }
 
 .nav-btn:active {
-    border-color: #003366; /* 按下时边框变为更深的颜色 */
+    border-color: #003366;
     color: #003366;
-    transform: translateY(1px); /* 按下时稍微向下移动，模拟按下效果 */
+    transform: translateY(1px);
 }
 
-.nav-btn img {
-    width: 24px; /* 根据实际图片大小调整宽度，这里假设图标宽度24px */
-    height: 24px; /* 高度24px */
-    margin-bottom: 5px; /* 图标与文字之间添加一点间距 */
-}
-
-/* 弹窗通用样式 */
+/* 弹窗通用样式，缩短宽度并居中显示，初始隐藏，添加显示动画效果 */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 100; /* 提高层级确保在其他元素之上显示 */
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 400px; /* 弹窗默认宽度 */
+    width: 70%; /* 缩短弹窗宽度，可根据实际情况调整此值 */
     height: auto;
-    overflow: hidden; /* 隐藏溢出内容，避免出现滚动条（除了设置了滚动条的区域） */
+    overflow: hidden;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     animation: fadeInModal 0.3s ease-out;
 }
 
+/* 为弹窗添加显示时的动画效果 */
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
 .modal-content {
     background-color: #fff;
     margin: 0;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     position: relative;
 }
 
+/* 返回键（关闭按钮）样式调整，使其更美观且准确放置在每个弹窗卡片的右上角 */
 .close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #003366;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    transition: color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .close-btn:hover,
 .close-btn:focus {
+    background-color: rgba(255, 255, 255, 1);
     color: #000;
+    transform: scale(1.1);
 }
 
-/* 提现弹窗样式 */
+/* 提现弹窗内输入框样式，适当调整宽度和边距 */
 #withdraw-modal input[type="number"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
@@ -251,7 +265,7 @@ h2 {
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 10px 0;
     cursor: pointer;
     font-size: 16px;
     width: 100%;
@@ -270,54 +284,58 @@ h2 {
 #transaction-id {
     color: #0077be;
     font-weight: bold;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
-/* 历史记录弹窗样式 */
+/* 历史记录弹窗样式，适当调整宽度和内部元素样式 */
 #history-modal {
-    width: 300px; /* 历史记录弹窗宽度，可展示更多内容 */
+    width: 70%; /* 同样应用缩短后的宽度 */
 }
 
 #history-list {
-    max-height: 400px;
+    max-height: 300px;
     overflow-y: auto;
 }
 
-.history-record-card {
+.history-record_card {
     background-color: #f9f9f9;
     border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 10px;
+    padding: 10px;
+    margin-bottom: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
 }
 
-.history-record-card:hover {
+.history-record_card:hover {
     transform: translateY(-1px);
 }
 
 .history-record p {
-    margin: 8px 0;
+    margin: 5px 0;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 .payment-status {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    margin-left: 10px;
+    margin-left: 8px;
 }
 
-/* 设置弹窗样式 */
+/* 设置弹窗样式，输入框等适当调整 */
+#settings-modal {
+    width: 70%; /* 应用缩短后的宽度 */
+}
+
 #settings-modal input[type="text"] {
-    width: 200px;
+    width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     border: 5px solid #A8AFFF;
     border-radius: 10px;
-    font-size: 10px;
+    font-size: 16px;
 }
 
 #save-settings-btn {
@@ -325,7 +343,7 @@ h2 {
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 10px 0;
     cursor: pointer;
     font-size: 16px;
     width: 100%;
@@ -341,114 +359,8 @@ h2 {
     transform: scale(0.95);
 }
 
-/* 后台系统弹窗样式 */
-#admin-modal {
-    width: 400px;
-}
-
-#admin-modal h3 {
-    color: #0077be;
-}
-
-#transaction-id-input {
+/* 广告部分样式，让其自适应手机屏幕宽度 */
+#frame {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-#search-transaction-btn {
-    background-color: #0077be;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-#search-transaction-btn:hover {
-    background-color: #005599;
-    transform: scale(1.05);
-}
-
-#search-transaction-btn:active {
-    transform: scale(0.95);
-}
-
-#transaction-records {
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-#history-status {
-    margin-top: 15px;
-    color: #0077be;
-    font-weight: bold;
-}
-
-.mark-paid-btn {
-    background-color: #0077be;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-left: 10px;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-.mark-paid-btn:hover {
-    background-color: #005599;
-    transform: scale(1.05);
-}
-
-.mark-paid-btn:active {
-    transform: scale(0.95);
-}
-
-@keyframes fadeInModal {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInAndScaleHistoryModal {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.9);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
-
-#history-modal {
-    animation: fadeInAndScaleHistoryModal 0.3s ease-out;
-}
-
-#history-list::-webkit-scrollbar {
-    width: 8px;
-}
-
-#history-list::-webkit-scrollbar-track {
-    background-color: #f0f0f0;
-    border-radius: 5px;
-}
-
-#history-list::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 5px;
-}
-
-#history-list::-webkit-scrollbar-thumb:hover {
-    background-color: #aaa;
+    height: auto;
 }
